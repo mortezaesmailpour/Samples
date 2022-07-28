@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace RsaEncryption;
 public class RsaService : IRsaService
 {
-    private readonly RSAEncryptionPadding encryptionPadding = RSAEncryptionPadding.OaepSHA256;
+    private readonly RSAEncryptionPadding encryptionPadding = RSAEncryptionPadding.Pkcs1;
     private readonly RSASignaturePadding signaturePadding = RSASignaturePadding.Pkcs1;
     private readonly HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA256;
     public (string privateKey, string publicKey) Create()
@@ -21,8 +21,8 @@ public class RsaService : IRsaService
         rsa.FromXmlString(key);
         return rsa;
     }
-    private byte[] GetBytes(string text) => Encoding.ASCII.GetBytes(text);
-    private string GetString(byte[] textBytes) => Convert.ToBase64String(textBytes);
+    private byte[] GetBytes(string text) => Encoding.Unicode.GetBytes(text);
+    private string GetString(byte[] textBytes) => Encoding.Unicode.GetString(textBytes);
     public string? Encrypte(string text, string publicKey)
     {
         var rsa = CreateRsa(publicKey);
@@ -35,9 +35,9 @@ public class RsaService : IRsaService
     public string? Decrypte(string encrypteText, string privateKey)
     {
         var rsa = CreateRsa(privateKey);
-        var encryptedBytes = GetBytes(encrypteText);
-        var Bytes = rsa.Encrypt(encryptedBytes, encryptionPadding);
-        string Text = Convert.ToBase64String(Bytes);
+        var encryptedBytes = Convert.FromBase64String(encrypteText);
+        var Bytes = rsa.Decrypt(encryptedBytes, encryptionPadding);
+        string Text = GetString(Bytes);
         return Text;
     }
 
