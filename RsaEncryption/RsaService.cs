@@ -1,9 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace RsaEncryption;
+﻿namespace RsaEncryption;
 public class RsaService : IRsaService
 {
     private readonly RSAEncryptionPadding encryptionPadding = RSAEncryptionPadding.Pkcs1;

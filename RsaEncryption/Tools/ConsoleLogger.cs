@@ -2,7 +2,11 @@
 
 internal class ConsoleLogger : ILogger
 {
-    private void Log(LogLevel logLevel, string message)
+    private enum LogLevel
+    {
+        Info, Debug, Warning, Error
+    }
+    private static void Log(LogLevel logLevel, string message)
     {
         Console.ForegroundColor = logLevel switch
         {

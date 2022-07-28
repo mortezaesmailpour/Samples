@@ -1,6 +1,6 @@
 ﻿namespace RsaEncryption.Tools;
 
-public interface ILogger
+internal interface ILogger
 {
     public void LogInfo(string message);
     public void LogDebug(string message);

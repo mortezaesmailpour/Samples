@@ -1,6 +1,5 @@
 ﻿using RsaEncryption;
 using RsaEncryption.Tools;
-using System.Diagnostics;
 
 Console.WriteLine("RSA Encryption Demo");
 
