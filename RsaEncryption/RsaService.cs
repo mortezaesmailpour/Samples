@@ -46,7 +46,7 @@ public class RsaService : IRsaService
         var rsa = CreateRsa(privateKey);
         var textBytes = GetBytes(text);
         var signatureBytes = rsa.SignData(textBytes, hashAlgorithm, signaturePadding);
-        var signature = GetString(signatureBytes);
+        var signature = Convert.ToBase64String(signatureBytes);
         return signature;
     }
 
@@ -54,7 +54,7 @@ public class RsaService : IRsaService
     {
         var rsa = CreateRsa(publicKey);
         var textBytes = GetBytes(text);
-        var signatureBytes = GetBytes(text);
+        var signatureBytes = Convert.FromBase64String(signature);
         var result = rsa.VerifyData(textBytes, signatureBytes, hashAlgorithm, signaturePadding);
         return result;
     }

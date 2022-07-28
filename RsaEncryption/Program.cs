@@ -1,7 +1,5 @@
 ﻿using RsaEncryption;
 using RsaEncryption.Tools;
-using System.Security.Cryptography;
-using System.Text;
 
 Console.WriteLine("RSA Encryption Demo");
 ILogger logger = new ConsoleLogger();
@@ -19,3 +17,10 @@ var encryptedMsg = rsaService.Encrypte(msg, publicKey);
 logger.LogDebug("encryptedMsg : " + encryptedMsg);
 var decryptedMsg = rsaService.Decrypte(encryptedMsg, privateKey);
 logger.LogDebug("decryptedMsg : " + decryptedMsg);
+
+
+logger.LogDebug("Msg : " + msg);
+var signature = rsaService.Sign(msg, privateKey);
+logger.LogDebug("signature : " + signature);
+var verify = rsaService.Verify(msg, signature, publicKey);
+logger.LogDebug("verify : " + verify.ToString());
