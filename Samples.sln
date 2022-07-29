@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RsaEncryption", "RsaEncryption\RsaEncryption.csproj", "{4D074671-3881-4D0F-B9C5-CC59F382FEE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RsaEncryption", "RsaEncryption\RsaEncryption.csproj", "{4D074671-3881-4D0F-B9C5-CC59F382FEE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{18B875B9-FC4B-4796-9EFE-C4E3545E2F1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLogger", "Tools\ConsoleLogger\ConsoleLogger.csproj", "{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{4D074671-3881-4D0F-B9C5-CC59F382FEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D074671-3881-4D0F-B9C5-CC59F382FEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D074671-3881-4D0F-B9C5-CC59F382FEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E} = {18B875B9-FC4B-4796-9EFE-C4E3545E2F1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39B151BC-33BE-441F-8367-B7D0F2B95EFC}

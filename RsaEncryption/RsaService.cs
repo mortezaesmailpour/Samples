@@ -1,7 +1,4 @@
-﻿using RsaEncryption.Tools;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace RsaEncryption;
+﻿namespace RsaEncryption;
 public class RsaService : IRsaService
 {
     private readonly RSAEncryptionPadding encryptionPadding = RSAEncryptionPadding.Pkcs1;
@@ -10,6 +7,7 @@ public class RsaService : IRsaService
     private readonly int MaxDataSize = 245;
     private readonly int EncryptedBlockSize = 256;
     private readonly ILogger logger = new ConsoleLogger();
+
     public (string privateKey, string publicKey) Create()
     {
         var rsa = RSACryptoServiceProvider.Create();
@@ -60,7 +58,7 @@ public class RsaService : IRsaService
         byte[] encryptedBytes;
         if (textBytes.Length > MaxDataSize)
         {
-            logger.LogWarning($"text size ({text.Length}) in more than one block. we should split it to several Blocks");
+            logger.Warning($"text size ({text.Length}) in more than one block. we should split it to several Blocks");
             List<byte[]> encryptedBytesList = new List<byte[]>();
             var ListOfTextBytes = Split(textBytes, MaxDataSize);
             for (int i = 0; i < ListOfTextBytes.Count; i++)
@@ -86,7 +84,7 @@ public class RsaService : IRsaService
         byte[] bytes;
         if (encryptedBytes.Length > EncryptedBlockSize)
         {
-            logger.LogWarning($"encrypteText size ({encrypteText.Length}) shows it's  more than one block. we should split it to {encryptedBytes.Length / EncryptedBlockSize} Blocks");
+            logger.Warning($"encrypteText size ({encrypteText.Length}) shows it's  more than one block. we should split it to {encryptedBytes.Length / EncryptedBlockSize} Blocks");
             List<byte[]> decryptedBytesList = new List<byte[]>();
             var ListOfEncryptedBytes = Split(encryptedBytes, EncryptedBlockSize);
             Console.Write("Start Decryption ... ");
