@@ -4,8 +4,55 @@ ILogger logger = new ConsoleLogger();
 
 logger.Test();
 
+
+//--------------
+
+
+FileServiceDemo(@"D:\");
+
+
+
+
+
+
+Console.WriteLine("Press any key to Continue.");
+Console.ReadKey();
+//--------------
+
+void FileServiceDemo(string Path)
+{
+    List<string> list = new();
+    var stopWatch = Stopwatch.StartNew();
+    logger.Trace("FileService Demo is starting ...");
+    try
+    {
+        var fileService = new FileService();
+        var files = fileService.GetAllFiles(Path).ToList();
+        var largeFile = files.Where(f => f.Length > 100000000).ToList();
+        var sortedFiles = largeFile.OrderBy(f => f.Length).ToList();
+        foreach (var file in sortedFiles)
+        {
+            //list.Add(file.FullName+"!");
+            Console.WriteLine(file.FullName);
+        }
+        logger.Trace("{0} files was found.", files.Count);
+    }
+    catch (Exception ex) { logger.Error("something went wrong : " + ex.Message); }
+    finally
+    {
+        stopWatch.Stop();
+        logger.Trace("RSA FileService Demo was finished in " + stopWatch.ElapsedMilliseconds + "ms");
+    }
+}
+//--------------
+
+
 RSAEncryptionDemo(GetRandomString(1001007));
 
+
+Console.WriteLine("Press any key to exit.");
+Console.ReadKey();
+//--------------
 
 string GetRandomString(int length)
 {

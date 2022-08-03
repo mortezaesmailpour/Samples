@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RsaEncryption", "RsaEncrypt
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{18B875B9-FC4B-4796-9EFE-C4E3545E2F1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLogger", "Tools\ConsoleLogger\ConsoleLogger.csproj", "{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleLogger", "Tools\ConsoleLogger\ConsoleLogger.csproj", "{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileService", "Tools\FileService\FileService.csproj", "{D2644B89-5017-4CA3-A1FD-0CC3BA27343E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +25,17 @@ Global
 		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2644B89-5017-4CA3-A1FD-0CC3BA27343E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2644B89-5017-4CA3-A1FD-0CC3BA27343E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2644B89-5017-4CA3-A1FD-0CC3BA27343E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2644B89-5017-4CA3-A1FD-0CC3BA27343E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{36C8C268-0C47-49F7-BF4C-07A9A8DCBD7E} = {18B875B9-FC4B-4796-9EFE-C4E3545E2F1B}
+		{D2644B89-5017-4CA3-A1FD-0CC3BA27343E} = {18B875B9-FC4B-4796-9EFE-C4E3545E2F1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39B151BC-33BE-441F-8367-B7D0F2B95EFC}
