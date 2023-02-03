@@ -1,4 +1,7 @@
 ﻿using RsaEncryption;
+using System.Runtime;
+using Tools.Model;
+using Tools;
 
 ILogger logger = new ConsoleLogger();
 
@@ -7,8 +10,7 @@ logger.Test();
 
 //--------------
 
-
-FileServiceDemo(@"D:\");
+FileServiceDemo(@"C:\morteza");
 
 
 
@@ -26,10 +28,20 @@ void FileServiceDemo(string Path)
     logger.Trace("FileService Demo is starting ...");
     try
     {
-        var fileService = new FileService();
+        var fileService = new Tools.FileService();
         var files = fileService.GetAllFiles(Path).ToList();
         var largeFile = files.Where(f => f.Length > 100000000).ToList();
         var sortedFiles = largeFile.OrderBy(f => f.Length).ToList();
+
+        List<FileModel> fileModels = new();
+        
+        foreach (var file in files)
+            fileModels.Add(Tools.FileService.GetFileModelFromFileInfo(file));
+
+        fileService.TrySaveToDBAsync(fileModels);
+        //fileService.TrySaveToDBAsync(Tools.FileService.GetFileModelFromFileInfo(sortedFiles.First()));
+        fileService.TrySaveToTextFileAsync(@"C:\\Morteza\\test.txt",
+            String.Join("\n", from file in files select Tools.FileService.GetFileModelFromFileInfo(file)));
         foreach (var file in sortedFiles)
         {
             //list.Add(file.FullName+"!");

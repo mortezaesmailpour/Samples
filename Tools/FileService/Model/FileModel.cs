@@ -1,8 +1,12 @@
-﻿using System.Text.Json;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 
 namespace Tools.Model;
 public class FileModel
 {
+    [Key]
+    public Guid ID { get; set; }
+
     public string Name { get; set; }
     public long Length { get; set; }
     public string Path { get; set; }

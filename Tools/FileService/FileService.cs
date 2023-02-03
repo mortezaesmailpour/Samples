@@ -64,7 +64,7 @@ public class FileService : IFileService
                 foreach (var file in GetAllFiles_WY(directory))
                     yield return file;
     }
-    
+
     public async Task<bool> TrySaveToTextFileAsync(string path, string? contents)
     {
         try
@@ -80,7 +80,44 @@ public class FileService : IFileService
         }
         catch (Exception ex)
         {
-            logger.Error("some thing went wrong : {0}", ex.Message); 
+            logger.Error("some thing went wrong : {0}", ex.Message);
+            return false;
+        }
+    }
+    public async Task<bool> TrySaveToDBAsync(FileModel file)
+    {
+        try
+        {
+            using (var context = new FileDbContext())
+            {
+                context.Files.Add(file);
+                await context.SaveChangesAsync();
+            }
+            return true;
+        }
+        catch (Exception ex)
+        {
+            logger.Error("some thing went wrong : {0}", ex.Message);
+            return false;
+        }
+    }
+    public async Task<bool> TrySaveToDBAsync(List<FileModel> files)
+    {
+        foreach (var file in files)
+            await TrySaveToDBAsync(file);
+            try
+        {
+            using (var context = new FileDbContext())
+            {
+                foreach (var file in files)
+                    context.Files.Add(file);
+                await context.SaveChangesAsync();
+            }
+            return true;
+        }
+        catch (Exception ex)
+        {
+            logger.Error("some thing went wrong : {0}", ex.Message);
             return false;
         }
     }
